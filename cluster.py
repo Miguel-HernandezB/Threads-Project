@@ -6,7 +6,7 @@ import time
 
 
 HOST = sys.argv[1]
-PORT = sys.argv[2]
+PORT = int(sys.argv[2])
 
 PRODUCER_COUNT = 1                          #Global variable for producer creation quantity
 CONSUMER_COUNT = 2                          #Global variable for consumer creation quantity
@@ -15,6 +15,7 @@ slots = thread.Semaphore(0)                 #Naming the variable that will act a
 mutex = thread.Lock()                       #Naming the variable that will act as a mutex
 
 
+"""
 #Extracts the elements from the message 
 def extract_msg(item):
     item_list = item.split(":")                     #Splits string in two        
@@ -59,7 +60,6 @@ class SJF_Scheduler():
     def sorted():
         pass
         
-
 
 
 
@@ -111,11 +111,11 @@ def Consumer(queue):
     print("Thread finished. Worked on the following processes {private_worked_processes_log} and the total process time was {total_process_time}")
     
     
-
+"""
 ##############################################################################
 def main():
 
-    queue = SJF_Scheduler()
+   ## queue = SJF_Scheduler()
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         try:
@@ -128,8 +128,21 @@ def main():
 
         with client_conn:
             print(f"Connected by {client_addr}")
+            decoded = []
             while True:
+                    data = client_conn.recv(1024)
+                    if not data:
+                        break
+                    print(f"Recieved:{data.decode()}")
+                    decoded.append(data.decode())
 
+    print(decoded)
+                        
+                    
+                    
+
+
+"""
                     #Creating and starting producer/consumer threads
                     producer_thread = thread.Thread(target=Producer, args=(client_conn, client_addr, queue))
                     producer_thread.start()
@@ -148,7 +161,7 @@ def main():
                     consumer_thread1.join()
                     consumer_thread2.join()
 
-
+"""
                         
 
 
