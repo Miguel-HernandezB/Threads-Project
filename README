@@ -1,0 +1,28 @@
+TO DO:
+
+    - TCP comunication
+        - Create a client:
+            - send message, random sleep (1s-5s)
+            - BONO: Receive message from server 
+        - Create a server
+
+    - Threads:
+        - Consumer Thread
+        - Producer Thread
+        - Identify critical region
+    
+    - Queue
+        - Implement a queue
+        - Shortest Job First
+
+This project consists of two files: edevice.py and cluster.py
+    
+
+        
+    
+
+
+
+
+REFRENCES:
+https://realpython.com/python-sockets/
